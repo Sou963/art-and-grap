@@ -1,0 +1,1621 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bangladesh Flag Salute - Joy Bangla Tribute</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600;700&display=swap");
+
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: "Inter", sans-serif;
+        background-color: #030712;
+        user-select: none;
+      }
+
+      .bangla-font {
+        font-family: "Tiro Bangla", serif;
+      }
+
+      .cinzel-font {
+        font-family: "Cinzel", serif;
+      }
+
+      /* Glassmorphism Panels */
+      .glass-panel {
+        background: rgba(15, 23, 42, 0.72);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65);
+      }
+
+      .glass-btn {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .glass-btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .glass-btn.active {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 106, 78, 0.85),
+          rgba(244, 42, 65, 0.85)
+        );
+        border-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 0 20px rgba(244, 42, 65, 0.5);
+      }
+
+      /* Hero Joy Bangla Button Pulsing Effect */
+      .joy-bangla-btn {
+        background: linear-gradient(135deg, #006a4e 0%, #f42a41 100%);
+        box-shadow:
+          0 0 25px rgba(244, 42, 65, 0.6),
+          0 0 10px rgba(0, 106, 78, 0.8);
+        animation: pulseGlow 2.5s infinite ease-in-out;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .joy-bangla-btn:hover {
+        transform: scale(1.05) translateY(-3px);
+        box-shadow:
+          0 0 35px rgba(244, 42, 65, 0.9),
+          0 0 20px rgba(0, 106, 78, 1);
+      }
+
+      .joy-bangla-btn:active {
+        transform: scale(0.97);
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow:
+            0 0 20px rgba(244, 42, 65, 0.5),
+            0 0 10px rgba(0, 106, 78, 0.6);
+        }
+        50% {
+          box-shadow:
+            0 0 35px rgba(244, 42, 65, 0.85),
+            0 0 20px rgba(0, 106, 78, 0.9);
+        }
+      }
+
+      /* Custom Range Slider */
+      input[type="range"] {
+        -webkit-appearance: none;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        height: 6px;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        background: #f42a41;
+        cursor: pointer;
+        box-shadow: 0 0 12px rgba(244, 42, 65, 0.9);
+        transition: transform 0.15s ease;
+      }
+
+      input[type="range"]::-webkit-slider-thumb:hover {
+        transform: scale(1.25);
+      }
+
+      /* Hide scrollbars */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body class="relative w-full h-full text-white">
+    <!-- Interactive Canvas -->
+    <canvas
+      id="mainCanvas"
+      class="absolute inset-0 w-full h-full z-0 cursor-grab active:cursor-grabbing"
+    ></canvas>
+
+    <!-- Top Left Header -->
+    <header
+      class="absolute top-4 left-4 md:top-6 md:left-8 z-10 pointer-events-none transition-all duration-300"
+    >
+      <div class="flex items-center gap-3 mb-1">
+        <span
+          class="inline-block w-3.5 h-3.5 rounded-full bg-[#f42a41] animate-ping"
+        ></span>
+        <span
+          class="text-xs uppercase tracking-widest text-emerald-400 font-bold"
+          >গণপ্রজাতন্ত্রী বাংলাদেশ | TRIBUTE SIMULATION</span
+        >
+      </div>
+      <h1
+        class="text-3xl md:text-5xl font-bold bangla-font tracking-wide text-white drop-shadow-xl flex items-center gap-3"
+      >
+        জয় বাংলা
+        <span
+          class="text-lg md:text-2xl font-normal text-emerald-300 cinzel-font hidden sm:inline"
+          >| Joy Bangla!</span
+        >
+      </h1>
+      <p
+        class="text-xs md:text-sm text-gray-200 max-w-md font-light drop-shadow-md mt-1"
+      >
+        জাতীয় স্মৃতিসৌধ ও পতাকার প্রতি বিনম্র শ্রদ্ধা। Interactive 3D Flag,
+        Saluting Guards, Water Reflection & Patriotic Fanfare.
+      </p>
+    </header>
+
+    <!-- Top Right Quick Info Badge -->
+    <div
+      class="absolute top-4 right-4 md:top-6 md:right-8 z-10 hidden sm:flex items-center gap-2 glass-panel px-4 py-2 rounded-full text-xs text-gray-200"
+    >
+      <i class="ph-bold ph-hand-pointing text-emerald-400 text-base"></i>
+      <span>Drag canvas to tilt view • Click canvas for flower tribute</span>
+    </div>
+
+    <!-- Floating Dock Control Panel -->
+    <div
+      id="controlPanel"
+      class="glass-panel absolute bottom-4 left-4 right-4 md:right-auto md:left-8 md:bottom-8 z-20 rounded-2xl p-4 md:p-6 md:w-96 transition-all duration-300 max-h-[85vh] overflow-y-auto no-scrollbar"
+    >
+      <!-- Header with Collapse Toggle -->
+      <div
+        class="flex items-center justify-between border-b border-white/10 pb-3 mb-4"
+      >
+        <div class="flex items-center gap-2">
+          <i class="ph-bold ph-flag text-xl text-emerald-400"></i>
+          <h2 class="font-bold text-sm tracking-wider uppercase text-gray-100">
+            National Controls
+          </h2>
+        </div>
+        <button
+          id="toggleCollapseBtn"
+          class="text-gray-300 hover:text-white transition-colors"
+        >
+          <i class="ph-bold ph-caret-down text-lg"></i>
+        </button>
+      </div>
+
+      <div id="panelContent" class="space-y-5">
+        <!-- HERO "JOY BANGLA" BUTTON -->
+        <div>
+          <button
+            id="joyBanglaBtn"
+            class="joy-bangla-btn w-full py-3.5 px-5 rounded-xl font-bold text-white text-base md:text-lg flex items-center justify-center gap-3 border border-white/30 tracking-wider"
+          >
+            <i class="ph-fill ph-speaker-high text-2xl animate-bounce"></i>
+            <span class="bangla-font text-xl">জয় বাংলা!</span>
+            <span class="text-xs opacity-90 font-mono">(JOY BANGLA)</span>
+          </button>
+          <p class="text-[11px] text-gray-300 text-center mt-1.5 font-light">
+            Plays synthesized bugle fanfare, voice salute & celebratory
+            fireworks
+          </p>
+        </div>
+
+        <!-- Lighting / Atmosphere Preset Buttons -->
+        <div>
+          <label
+            class="text-xs font-semibold text-gray-300 uppercase tracking-wider block mb-2"
+            >Atmospheric Lighting</label
+          >
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              data-mode="golden"
+              class="mode-btn glass-btn active rounded-xl py-2 px-3 text-xs flex items-center justify-center gap-2"
+            >
+              <i class="ph-fill ph-sun-horizon text-amber-400 text-sm"></i>
+              Sunrise Gold
+            </button>
+            <button
+              data-mode="emerald"
+              class="mode-btn glass-btn rounded-xl py-2 px-3 text-xs flex items-center justify-center gap-2"
+            >
+              <i class="ph-fill ph-tree-evergreen text-emerald-400 text-sm"></i>
+              Emerald Dusk
+            </button>
+            <button
+              data-mode="sunset"
+              class="mode-btn glass-btn rounded-xl py-2 px-3 text-xs flex items-center justify-center gap-2"
+            >
+              <i class="ph-fill ph-cloud-sun text-rose-400 text-sm"></i> Crimson
+              Sunset
+            </button>
+            <button
+              data-mode="night"
+              class="mode-btn glass-btn rounded-xl py-2 px-3 text-xs flex items-center justify-center gap-2"
+            >
+              <i class="ph-fill ph-moon-stars text-indigo-400 text-sm"></i>
+              Independence Night
+            </button>
+          </div>
+        </div>
+
+        <!-- Wind Velocity Slider -->
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <label
+              class="text-xs font-semibold text-gray-300 uppercase tracking-wider"
+              >Wind Velocity</label
+            >
+            <span id="windVal" class="text-xs text-emerald-400 font-mono"
+              >50 km/h</span
+            >
+          </div>
+          <input
+            id="windSlider"
+            type="range"
+            min="10"
+            max="100"
+            value="50"
+            class="w-full"
+          />
+        </div>
+
+        <!-- Flower Petals Selector -->
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label
+              class="text-xs font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-1.5"
+            >
+              <i class="ph-fill ph-flower-lotus text-pink-400"></i> Tribute
+              Petals
+            </label>
+            <button
+              id="petalToggleBtn"
+              class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-600/70 border border-emerald-400/40 text-emerald-100"
+            >
+              Enabled
+            </button>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            <button
+              data-petal="marigold"
+              class="petal-type-btn glass-btn active rounded-lg py-1.5 text-[11px] text-center"
+            >
+              Marigold
+            </button>
+            <button
+              data-petal="rose"
+              class="petal-type-btn glass-btn rounded-lg py-1.5 text-[11px] text-center"
+            >
+              Red Rose
+            </button>
+            <button
+              data-petal="mixed"
+              class="petal-type-btn glass-btn rounded-lg py-1.5 text-[11px] text-center"
+            >
+              National Mix
+            </button>
+          </div>
+        </div>
+
+        <!-- Feature Toggles -->
+        <div class="grid grid-cols-2 gap-2 pt-1 border-t border-white/10">
+          <button
+            id="toggleRaysBtn"
+            class="glass-btn active rounded-xl py-2 px-3 text-xs flex items-center justify-center gap-2"
+          >
+            <i class="ph-bold ph-rays text-amber-300"></i> God Rays
+          </button>
+          <button
+            id="toggleGuardsBtn"
+            class="glass-btn active rounded-xl py-2 px-3 text-xs flex items-center justify-center gap-2"
+          >
+            <i class="ph-bold ph-person-arms-out text-emerald-300"></i> Saluting
+            Guards
+          </button>
+        </div>
+
+        <!-- Audio Ambient & Display Actions -->
+        <div class="flex items-center gap-2 pt-1">
+          <button
+            id="ambientAudioBtn"
+            class="flex-1 glass-btn rounded-xl py-2.5 px-3 text-xs flex items-center justify-center gap-2 text-gray-200"
+          >
+            <i class="ph-bold ph-wind text-base text-emerald-400"></i>
+            <span id="ambientAudioStatus">Ambient Wind</span>
+          </button>
+          <button
+            id="reseedBtn"
+            class="glass-btn rounded-xl p-2.5 text-xs text-gray-200 hover:text-white"
+            title="Scatter Petal Shower"
+          >
+            <i class="ph-bold ph-sparkle text-lg"></i>
+          </button>
+          <button
+            id="fullscreenBtn"
+            class="glass-btn rounded-xl p-2.5 text-xs text-gray-200 hover:text-white"
+            title="Toggle Fullscreen"
+          >
+            <i class="ph-bold ph-corners-out text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const canvas = document.getElementById("mainCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Application State
+      const state = {
+        mode: "golden", // golden, emerald, sunset, night
+        windSpeed: 50, // Wind intensity
+        petalsEnabled: true, // Floating petals
+        petalType: "marigold", // marigold, rose, mixed
+        godRays: true, // Volumetric lighting rays
+        guardsSalute: true, // Guards on foreground bank
+        soundEnabled: false, // Ambient audio
+        cameraAngleX: 0, // Drag parallax X
+        cameraAngleY: 0, // Drag parallax Y
+        time: 0, // Global animation clock
+        aspectRatio: 1,
+      };
+
+      // Lighting Color Profiles
+      const PRESETS = {
+        golden: {
+          skyTop: "#13112c",
+          skyMid: "#ba482b",
+          skyBottom: "#f39c12",
+          sunColor: "rgba(255, 215, 120, ",
+          sunX: 0.5,
+          sunY: 0.4,
+          ambientLight: 0.95,
+          sritiBaseColor: "#e0b896",
+          sritiShadowColor: "#4d2838",
+          waterColor: "#2b1b36",
+          grassColor: "#1e3818",
+          starOpacity: 0,
+        },
+        emerald: {
+          skyTop: "#06291d",
+          skyMid: "#006a4e",
+          skyBottom: "#80c342",
+          sunColor: "rgba(244, 42, 65, ", // Crimson sun setting in green sky
+          sunX: 0.38,
+          sunY: 0.32,
+          ambientLight: 1.0,
+          sritiBaseColor: "#d1e3d6",
+          sritiShadowColor: "#10382b",
+          waterColor: "#0b3828",
+          grassColor: "#004d36",
+          starOpacity: 0,
+        },
+        sunset: {
+          skyTop: "#1b0826",
+          skyMid: "#8b1e5a",
+          skyBottom: "#e65c00",
+          sunColor: "rgba(255, 120, 60, ",
+          sunX: 0.65,
+          sunY: 0.46,
+          ambientLight: 0.8,
+          sritiBaseColor: "#8a4b5d",
+          sritiShadowColor: "#240a1d",
+          waterColor: "#2a0826",
+          grassColor: "#1d2e14",
+          starOpacity: 0.2,
+        },
+        night: {
+          skyTop: "#02050e",
+          skyMid: "#081026",
+          skyBottom: "#111d38",
+          sunColor: "rgba(220, 235, 255, ", // Moon
+          sunX: 0.78,
+          sunY: 0.22,
+          ambientLight: 0.45,
+          sritiBaseColor: "#303a52",
+          sritiShadowColor: "#080d1a",
+          waterColor: "#060a14",
+          grassColor: "#07170a",
+          starOpacity: 0.95,
+        },
+      };
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        state.aspectRatio = canvas.width / canvas.height;
+        initFlagGrid();
+      }
+      window.addEventListener("resize", resizeCanvas);
+
+      // Interactive Drag Parallax
+      let isDragging = false;
+      let startX = 0,
+        startY = 0;
+
+      canvas.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        state.cameraAngleX = Math.max(
+          -140,
+          Math.min(140, state.cameraAngleX + dx * 0.25),
+        );
+        state.cameraAngleY = Math.max(
+          -45,
+          Math.min(45, state.cameraAngleY + dy * 0.15),
+        );
+        startX = e.clientX;
+        startY = e.clientY;
+      });
+
+      window.addEventListener("mouseup", () => (isDragging = false));
+
+      // Touch support
+      canvas.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+        }
+      });
+      window.addEventListener("touchmove", (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        const dx = e.touches[0].clientX - startX;
+        const dy = e.touches[0].clientY - startY;
+        state.cameraAngleX = Math.max(
+          -140,
+          Math.min(140, state.cameraAngleX + dx * 0.25),
+        );
+        state.cameraAngleY = Math.max(
+          -45,
+          Math.min(45, state.cameraAngleY + dy * 0.15),
+        );
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      });
+      window.addEventListener("touchend", () => (isDragging = false));
+
+      // Tap canvas to scatter flower petals
+      canvas.addEventListener("click", (e) => {
+        if (isDragging) return;
+        spawnPetalBurst(e.clientX, e.clientY, 16);
+      });
+
+      // Night Stars
+      const stars = [];
+      for (let i = 0; i < 220; i++) {
+        stars.push({
+          x: Math.random(),
+          y: Math.random() * 0.55,
+          size: Math.random() * 1.8 + 0.4,
+          alpha: Math.random(),
+          twinkleSpeed: Math.random() * 0.03 + 0.005,
+        });
+      }
+
+      // Flying Birds System
+      const birds = [];
+      for (let i = 0; i < 14; i++) {
+        birds.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight * 0.35,
+          vx: Math.random() * 1.6 + 1.2,
+          vy: Math.sin(i) * 0.25,
+          wingSpeed: Math.random() * 0.15 + 0.1,
+          wingAngle: 0,
+          size: Math.random() * 6 + 7,
+        });
+      }
+
+      // Flower Petals System
+      const petals = [];
+      function createPetal(customX, customY) {
+        return {
+          x:
+            customX !== undefined
+              ? customX
+              : Math.random() * (canvas.width + 200) - 100,
+          y: customY !== undefined ? customY : -20 - Math.random() * 100,
+          z: Math.random() * 1.5 + 0.5,
+          size: Math.random() * 8 + 6,
+          vx: (Math.random() - 0.2) * (state.windSpeed * 0.05),
+          vy: Math.random() * 1.2 + 0.8,
+          rotX: Math.random() * Math.PI * 2,
+          rotY: Math.random() * Math.PI * 2,
+          rotZ: Math.random() * Math.PI * 2,
+          vRotX: (Math.random() - 0.5) * 0.08,
+          vRotY: (Math.random() - 0.5) * 0.08,
+          color: getPetalColor(),
+        };
+      }
+
+      function getPetalColor() {
+        if (state.petalType === "marigold") {
+          return Math.random() > 0.3 ? "#ff9900" : "#ffc107"; // Golden Marigold
+        } else if (state.petalType === "rose") {
+          return Math.random() > 0.2 ? "#f42a41" : "#b30024"; // Crimson Rose
+        } else {
+          const cols = ["#ff9900", "#ffc107", "#f42a41", "#ffffff", "#006a4e"];
+          return cols[Math.floor(Math.random() * cols.length)];
+        }
+      }
+
+      for (let i = 0; i < 70; i++) {
+        petals.push(
+          createPetal(
+            Math.random() * window.innerWidth,
+            Math.random() * window.innerHeight,
+          ),
+        );
+      }
+
+      function spawnPetalBurst(x, y, count) {
+        for (let i = 0; i < count; i++) {
+          const p = createPetal(
+            x + (Math.random() - 0.5) * 40,
+            y + (Math.random() - 0.5) * 40,
+          );
+          p.vx = (Math.random() - 0.5) * 6 + state.windSpeed * 0.04;
+          p.vy = (Math.random() - 0.5) * 6 - 2;
+          petals.push(p);
+        }
+      }
+
+      // Celebratory Fireworks & Soundwave Ripple FX
+      const soundwaveRipples = [];
+      const sparkParticles = [];
+
+      function triggerJoyBanglaVisualFX() {
+        const centerX = canvas.width * 0.5 + state.cameraAngleX;
+        const centerY = canvas.height * 0.42 + state.cameraAngleY * 0.3;
+
+        // Expandable Soundwave Rings
+        for (let i = 0; i < 4; i++) {
+          soundwaveRipples.push({
+            x: centerX,
+            y: centerY,
+            radius: 10 + i * 25,
+            maxRadius: Math.max(canvas.width, canvas.height) * 0.85,
+            speed: 12 + i * 3,
+            alpha: 1.0,
+            color: i % 2 === 0 ? "#f42a41" : "#006a4e",
+          });
+        }
+
+        // Burst of Golden & Crimson Spark Particles
+        for (let i = 0; i < 120; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 12 + 3;
+          sparkParticles.push({
+            x: centerX,
+            y: centerY,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 2,
+            size: Math.random() * 5 + 3,
+            color:
+              Math.random() > 0.4
+                ? "#ffd700"
+                : Math.random() > 0.5
+                  ? "#f42a41"
+                  : "#006a4e",
+            alpha: 1.0,
+            decay: Math.random() * 0.015 + 0.008,
+            gravity: 0.12,
+          });
+        }
+      }
+
+      // Flag 3D Grid Setup
+      const flagGrid = { cols: 36, rows: 24 };
+      let flagMesh = [];
+
+      function initFlagGrid() {
+        flagMesh = [];
+        for (let r = 0; r <= flagGrid.rows; r++) {
+          const row = [];
+          for (let c = 0; c <= flagGrid.cols; c++) {
+            row.push({
+              u: c / flagGrid.cols,
+              v: r / flagGrid.rows,
+              x: 0,
+              y: 0,
+              z: 0,
+              nx: 0,
+              ny: 0,
+              nz: 1,
+            });
+          }
+          flagMesh.push(row);
+        }
+      }
+
+      function updateFlagPhysics() {
+        const time = state.time * 0.003 * (state.windSpeed * 0.035 + 0.2);
+        const wind = state.windSpeed * 0.28;
+
+        // Flag Dimensions (10:6 aspect ratio)
+        const flagWidth = Math.min(canvas.width * 0.24, 300);
+        const flagHeight = flagWidth * 0.6;
+
+        // Flagpole anchor position
+        const poleX = canvas.width * 0.2 + state.cameraAngleX * 0.6;
+        const poleY = canvas.height * 0.35 + state.cameraAngleY * 0.4;
+
+        for (let r = 0; r <= flagGrid.rows; r++) {
+          for (let c = 0; c <= flagGrid.cols; c++) {
+            const p = flagMesh[r][c];
+            const u = p.u;
+            const v = p.v;
+
+            const xBase = u * flagWidth;
+            const yBase = v * flagHeight;
+
+            // Wave displacement formula for realistic dynamic cloth ripples
+            const wave1 = Math.sin(u * 8 - time * 4.5) * (u * wind * 0.85);
+            const wave2 =
+              Math.cos(v * 6 + u * 5 - time * 3.5) * (u * wind * 0.45);
+            const wave3 = Math.sin((u + v) * 9 - time * 6) * (u * 7);
+
+            p.x = poleX + xBase + wave2 * 0.35;
+            p.y = poleY + yBase + Math.sin(u * 4.5 - time * 2.2) * (u * 9);
+            p.z = wave1 + wave2 + wave3;
+          }
+        }
+
+        // Normals calculation for real-time 3D lighting highlights
+        for (let r = 0; r < flagGrid.rows; r++) {
+          for (let c = 0; c < flagGrid.cols; c++) {
+            const p = flagMesh[r][c];
+            const pRight = flagMesh[r][c + 1];
+            const pDown = flagMesh[r + 1][c];
+
+            const dx1 = pRight.x - p.x;
+            const dy1 = pRight.y - p.y;
+            const dz1 = pRight.z - p.z;
+
+            const dx2 = pDown.x - p.x;
+            const dy2 = pDown.y - p.y;
+            const dz2 = pDown.z - p.z;
+
+            let nx = dy1 * dz2 - dz1 * dy2;
+            let ny = dz1 * dx2 - dx1 * dz2;
+            let nz = dx1 * dy2 - dy1 * dx2;
+
+            const len = Math.sqrt(nx * nx + ny * ny + nz * nz) || 1;
+            p.nx = nx / len;
+            p.ny = ny / len;
+            p.nz = nz / len;
+          }
+        }
+      }
+
+      function drawSritiShoudo(ctx, isReflection = false) {
+        const p = PRESETS[state.mode];
+        const centerX = canvas.width * 0.5 + state.cameraAngleX;
+        const baseY =
+          canvas.height * 0.62 + (isReflection ? 0 : state.cameraAngleY * 0.3);
+        const monumentHeight = Math.min(canvas.height * 0.44, 400);
+
+        const sailCount = 7; // 7 Symmetrical pairs of concrete sails
+
+        ctx.save();
+        if (isReflection) {
+          ctx.translate(0, baseY * 2);
+          ctx.scale(1, -1);
+          ctx.globalAlpha = 0.45;
+        }
+
+        // Stepped Concrete Base
+        const baseWidth = monumentHeight * 1.5;
+        const steps = 4;
+        for (let i = 0; i < steps; i++) {
+          const w = baseWidth * (1 - i * 0.08);
+          const h = 12 - i * 2;
+          const sy = baseY - i * 6;
+          ctx.fillStyle = p.sritiShadowColor;
+          ctx.fillRect(centerX - w / 2, sy - h, w, h);
+          ctx.fillStyle = p.sritiBaseColor;
+          ctx.fillRect(centerX - w / 2 + 4, sy - h + 2, w - 8, h - 3);
+        }
+
+        // Render Sails Back-to-Front
+        for (let i = sailCount - 1; i >= 0; i--) {
+          const progress = i / (sailCount - 1);
+
+          const sailHeight = monumentHeight * (0.35 + (1 - progress) * 0.65);
+          const sailWidthHalf =
+            monumentHeight * 0.68 * (0.08 + progress * 0.42);
+          const apexXOffset = monumentHeight * 0.015 * (1 - progress);
+
+          const sunAngle = (p.sunX - 0.5) * 1.5;
+          const shadeFactor = 0.2 + Math.max(0, Math.cos(sunAngle + i * 0.1));
+
+          // Left Sail
+          const leftApexX = centerX - apexXOffset - progress * 8;
+          const leftApexY = baseY - sailHeight;
+          const leftOuterX = centerX - sailWidthHalf;
+          const leftInnerX = centerX - apexXOffset * 0.3;
+
+          drawSingleSail(
+            ctx,
+            leftApexX,
+            leftApexY,
+            leftOuterX,
+            leftInnerX,
+            baseY,
+            p,
+            shadeFactor,
+            true,
+          );
+
+          // Right Sail
+          const rightApexX = centerX + apexXOffset + progress * 8;
+          const rightApexY = baseY - sailHeight;
+          const rightOuterX = centerX + sailWidthHalf;
+          const rightInnerX = centerX + apexXOffset * 0.3;
+
+          drawSingleSail(
+            ctx,
+            rightApexX,
+            rightApexY,
+            rightOuterX,
+            rightInnerX,
+            baseY,
+            p,
+            shadeFactor,
+            false,
+          );
+        }
+
+        // Central Flame Glow
+        const centerGlow = ctx.createRadialGradient(
+          centerX,
+          baseY - 60,
+          5,
+          centerX,
+          baseY - 60,
+          90,
+        );
+        centerGlow.addColorStop(0, "rgba(255, 200, 100, 0.45)");
+        centerGlow.addColorStop(1, "rgba(255, 200, 100, 0)");
+        ctx.fillStyle = centerGlow;
+        ctx.fillRect(centerX - 100, baseY - 180, 200, 180);
+
+        // Night Spotlights
+        if (state.mode === "night") {
+          ctx.save();
+          ctx.globalCompositeOperation = "screen";
+          for (let k = -3; k <= 3; k++) {
+            const spotX = centerX + k * (monumentHeight * 0.12);
+            const beamGrad = ctx.createLinearGradient(
+              spotX,
+              baseY,
+              spotX + k * 18,
+              baseY - monumentHeight * 1.15,
+            );
+            beamGrad.addColorStop(0, "rgba(100, 200, 255, 0.4)");
+            beamGrad.addColorStop(1, "rgba(100, 200, 255, 0)");
+
+            ctx.beginPath();
+            ctx.moveTo(spotX - 8, baseY);
+            ctx.lineTo(spotX + k * 20 - 2, baseY - monumentHeight * 1.15);
+            ctx.lineTo(spotX + k * 20 + 2, baseY - monumentHeight * 1.15);
+            ctx.lineTo(spotX + 8, baseY);
+            ctx.closePath();
+            ctx.fillStyle = beamGrad;
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+
+        ctx.restore();
+      }
+
+      function drawSingleSail(
+        ctx,
+        apexX,
+        apexY,
+        outerX,
+        innerX,
+        baseY,
+        p,
+        shade,
+        isLeft,
+      ) {
+        ctx.beginPath();
+        ctx.moveTo(apexX, apexY);
+        ctx.lineTo(outerX, baseY);
+        ctx.lineTo(innerX, baseY);
+        ctx.closePath();
+
+        const grad = ctx.createLinearGradient(outerX, baseY, apexX, apexY);
+        if (isLeft) {
+          grad.addColorStop(0, p.sritiShadowColor);
+          grad.addColorStop(1, p.sritiBaseColor);
+        } else {
+          grad.addColorStop(0, p.sritiBaseColor);
+          grad.addColorStop(1, p.sritiShadowColor);
+        }
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(apexX, apexY);
+        ctx.lineTo(isLeft ? innerX : outerX, baseY);
+        ctx.strokeStyle = "rgba(0, 0, 0, 0.35)";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      function draw3DFlag(ctx) {
+        const p = PRESETS[state.mode];
+        const poleX = canvas.width * 0.2 + state.cameraAngleX * 0.6;
+        const poleTopY = canvas.height * 0.35 + state.cameraAngleY * 0.4;
+        const poleBottomY = canvas.height * 0.68 + state.cameraAngleY * 0.2;
+
+        // Shiny Brass Flagpole
+        ctx.save();
+        const poleGrad = ctx.createLinearGradient(poleX - 4, 0, poleX + 4, 0);
+        poleGrad.addColorStop(0, "#555");
+        poleGrad.addColorStop(0.3, "#fff2a3");
+        poleGrad.addColorStop(0.7, "#ffd700");
+        poleGrad.addColorStop(1, "#664a00");
+
+        ctx.fillStyle = poleGrad;
+        ctx.fillRect(
+          poleX - 3.5,
+          poleTopY - 15,
+          7,
+          poleBottomY - poleTopY + 15,
+        );
+
+        // Gold Finial
+        const finialGrad = ctx.createRadialGradient(
+          poleX - 2,
+          poleTopY - 18,
+          1,
+          poleX,
+          poleTopY - 15,
+          8,
+        );
+        finialGrad.addColorStop(0, "#ffffff");
+        finialGrad.addColorStop(0.5, "#ffd700");
+        finialGrad.addColorStop(1, "#996500");
+        ctx.fillStyle = finialGrad;
+        ctx.beginPath();
+        ctx.arc(poleX, poleTopY - 16, 8, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Official Bangladesh Colors
+        const bottleGreen = "#006a4e";
+        const crimsonRed = "#f42a41";
+
+        const lx = p.sunX - 0.5;
+        const ly = p.sunY - 0.5;
+        const lz = 0.8;
+
+        for (let r = 0; r < flagGrid.rows; r++) {
+          for (let c = 0; c < flagGrid.cols; c++) {
+            const p0 = flagMesh[r][c];
+            const p1 = flagMesh[r][c + 1];
+            const p2 = flagMesh[r + 1][c + 1];
+            const p3 = flagMesh[r + 1][c];
+
+            const avgU = (p0.u + p1.u + p2.u + p3.u) / 4;
+            const avgV = (p0.v + p1.v + p2.v + p3.v) / 4;
+
+            // Bangladesh Flag geometry: Circle center at u = 0.45 (9/20th)
+            const du = avgU - 0.45;
+            const dv = (avgV - 0.5) * (6 / 10);
+            const distFromCircleCenter = Math.sqrt(du * du + dv * dv);
+            const isRedCircle = distFromCircleCenter <= 0.2;
+
+            const baseColor = isRedCircle ? crimsonRed : bottleGreen;
+
+            const dot = p0.nx * lx + p0.ny * ly + p0.nz * lz;
+            const lighting = Math.max(0.22, Math.min(1.25, dot * 0.75 + 0.5));
+
+            ctx.fillStyle = adjustColorBrightness(baseColor, lighting);
+
+            ctx.beginPath();
+            ctx.moveTo(p0.x, p0.y);
+            ctx.lineTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.lineTo(p3.x, p3.y);
+            ctx.closePath();
+            ctx.fill();
+          }
+        }
+        ctx.restore();
+      }
+
+      function adjustColorBrightness(hex, factor) {
+        let r = parseInt(hex.slice(1, 3), 16);
+        let g = parseInt(hex.slice(3, 5), 16);
+        let b = parseInt(hex.slice(5, 7), 16);
+
+        r = Math.min(255, Math.max(0, Math.floor(r * factor)));
+        g = Math.min(255, Math.max(0, Math.floor(g * factor)));
+        b = Math.min(255, Math.max(0, Math.floor(b * factor)));
+
+        return `rgb(${r}, ${g}, ${b})`;
+      }
+
+      function drawWaterAndReflection(ctx) {
+        const p = PRESETS[state.mode];
+        const horizonY = canvas.height * 0.62 + state.cameraAngleY * 0.3;
+
+        // Reflective Water Surface
+        const waterGrad = ctx.createLinearGradient(
+          0,
+          horizonY,
+          0,
+          canvas.height,
+        );
+        waterGrad.addColorStop(0, p.waterColor);
+        waterGrad.addColorStop(1, "#02040a");
+        ctx.fillStyle = waterGrad;
+        ctx.fillRect(0, horizonY, canvas.width, canvas.height - horizonY);
+
+        // Mirror Reflection
+        drawSritiShoudo(ctx, true);
+
+        // Water Ripples Animation
+        ctx.save();
+        const time = state.time * 0.0025;
+        const rippleLines = 45;
+        for (let i = 0; i < rippleLines; i++) {
+          const yProgress = i / rippleLines;
+          const y = horizonY + yProgress * (canvas.height - horizonY);
+          const wave = Math.sin(y * 0.12 - time * 3.5) * (1 + yProgress * 7);
+
+          ctx.fillStyle = `rgba(255, 255, 255, ${0.035 + Math.sin(time + i) * 0.02})`;
+          ctx.fillRect(0, y + wave, canvas.width, 1.5);
+        }
+
+        // Shoreline Granite Border
+        ctx.fillStyle = p.sritiShadowColor;
+        ctx.fillRect(0, horizonY - 4, canvas.width, 8);
+        ctx.fillStyle = p.sritiBaseColor;
+        ctx.fillRect(0, horizonY - 2, canvas.width, 3);
+
+        // Layered Grass Terrain along bank
+        drawGrassTerrain(ctx, horizonY, p.grassColor);
+
+        ctx.restore();
+      }
+
+      function drawGrassTerrain(ctx, horizonY, grassColor) {
+        ctx.save();
+        ctx.fillStyle = grassColor;
+
+        // Left Bank Hill
+        ctx.beginPath();
+        ctx.moveTo(0, horizonY - 10);
+        ctx.quadraticCurveTo(
+          canvas.width * 0.15,
+          horizonY + 15,
+          canvas.width * 0.3,
+          horizonY + 2,
+        );
+        ctx.lineTo(canvas.width * 0.3, horizonY + 30);
+        ctx.lineTo(0, horizonY + 40);
+        ctx.closePath();
+        ctx.fill();
+
+        // Right Bank Hill
+        ctx.beginPath();
+        ctx.moveTo(canvas.width, horizonY - 10);
+        ctx.quadraticCurveTo(
+          canvas.width * 0.85,
+          horizonY + 15,
+          canvas.width * 0.7,
+          horizonY + 2,
+        );
+        ctx.lineTo(canvas.width * 0.7, horizonY + 30);
+        ctx.lineTo(canvas.width, horizonY + 40);
+        ctx.closePath();
+        ctx.fill();
+
+        // Animated Swaying Grass Blades
+        ctx.strokeStyle = "#2d5a27";
+        ctx.lineWidth = 1.5;
+        const time = state.time * 0.003;
+        for (let x = 0; x < canvas.width * 0.28; x += 6) {
+          const windSway = Math.sin(time + x) * (state.windSpeed * 0.12);
+          ctx.beginPath();
+          ctx.moveTo(x, horizonY + 2);
+          ctx.quadraticCurveTo(
+            x + windSway,
+            horizonY - 8,
+            x + windSway * 1.5,
+            horizonY - 14,
+          );
+          ctx.stroke();
+        }
+        for (let x = canvas.width * 0.72; x < canvas.width; x += 6) {
+          const windSway = Math.sin(time + x) * (state.windSpeed * 0.12);
+          ctx.beginPath();
+          ctx.moveTo(x, horizonY + 2);
+          ctx.quadraticCurveTo(
+            x + windSway,
+            horizonY - 8,
+            x + windSway * 1.5,
+            horizonY - 14,
+          );
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      function drawAtmosphereAndSky(ctx) {
+        const p = PRESETS[state.mode];
+
+        const skyGrad = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.65);
+        skyGrad.addColorStop(0, p.skyTop);
+        skyGrad.addColorStop(0.5, p.skyMid);
+        skyGrad.addColorStop(1, p.skyBottom);
+        ctx.fillStyle = skyGrad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Stars
+        if (p.starOpacity > 0) {
+          ctx.save();
+          for (let star of stars) {
+            star.alpha += Math.sin(state.time * star.twinkleSpeed) * 0.01;
+            const opacity =
+              Math.max(0.1, Math.min(1, star.alpha)) * p.starOpacity;
+            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+            ctx.beginPath();
+            ctx.arc(
+              star.x * canvas.width,
+              star.y * canvas.height,
+              star.size,
+              0,
+              Math.PI * 2,
+            );
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+
+        // Sun / Moon Orb
+        const sunX = canvas.width * p.sunX + state.cameraAngleX * 0.2;
+        const sunY = canvas.height * p.sunY + state.cameraAngleY * 0.2;
+
+        const sunGlow = ctx.createRadialGradient(
+          sunX,
+          sunY,
+          10,
+          sunX,
+          sunY,
+          240,
+        );
+        sunGlow.addColorStop(0, p.sunColor + "0.95)");
+        sunGlow.addColorStop(0.35, p.sunColor + "0.45)");
+        sunGlow.addColorStop(1, p.sunColor + "0)");
+
+        ctx.fillStyle = sunGlow;
+        ctx.beginPath();
+        ctx.arc(sunX, sunY, 240, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle =
+          state.mode === "night"
+            ? "#e2e8f0"
+            : state.mode === "emerald"
+              ? "#f42a41"
+              : "#ffffff";
+        ctx.beginPath();
+        ctx.arc(sunX, sunY, state.mode === "night" ? 22 : 28, 0, Math.PI * 2);
+        ctx.fill();
+
+        // God Rays
+        if (state.godRays && state.mode !== "night") {
+          ctx.save();
+          ctx.globalCompositeOperation = "screen";
+          const rayCount = 8;
+          for (let i = 0; i < rayCount; i++) {
+            const angle = (i / rayCount) * Math.PI * 0.6 + 0.3;
+            const rayGrad = ctx.createLinearGradient(
+              sunX,
+              sunY,
+              sunX + Math.cos(angle) * 850,
+              sunY + Math.sin(angle) * 850,
+            );
+            rayGrad.addColorStop(0, p.sunColor + "0.25)");
+            rayGrad.addColorStop(1, p.sunColor + "0)");
+
+            ctx.beginPath();
+            ctx.moveTo(sunX, sunY);
+            ctx.lineTo(
+              sunX + Math.cos(angle - 0.08) * 950,
+              sunY + Math.sin(angle - 0.08) * 950,
+            );
+            ctx.lineTo(
+              sunX + Math.cos(angle + 0.08) * 950,
+              sunY + Math.sin(angle + 0.08) * 950,
+            );
+            ctx.closePath();
+            ctx.fillStyle = rayGrad;
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+      }
+
+      function drawSalutingGuards(ctx) {
+        if (!state.guardsSalute) return;
+
+        const horizonY = canvas.height * 0.62 + state.cameraAngleY * 0.3;
+        const p = PRESETS[state.mode];
+
+        const guardPositions = [
+          { x: canvas.width * 0.12 + state.cameraAngleX * 0.8, scale: 1 },
+          { x: canvas.width * 0.16 + state.cameraAngleX * 0.8, scale: 0.95 },
+          {
+            x: canvas.width * 0.84 + state.cameraAngleX * 0.8,
+            scale: 0.95,
+            flip: true,
+          },
+          {
+            x: canvas.width * 0.88 + state.cameraAngleX * 0.8,
+            scale: 1,
+            flip: true,
+          },
+        ];
+
+        const breathY = Math.sin(state.time * 0.002) * 1.5;
+
+        for (let g of guardPositions) {
+          ctx.save();
+          ctx.translate(g.x, horizonY + 8 + breathY);
+          if (g.flip) ctx.scale(-g.scale, g.scale);
+          else ctx.scale(g.scale, g.scale);
+
+          // Silhouette fill with ambient rim light outline
+          ctx.fillStyle = state.mode === "night" ? "#080d1a" : "#111827";
+          ctx.strokeStyle = "rgba(255, 215, 120, 0.4)";
+          ctx.lineWidth = 1;
+
+          // Head with Beret
+          ctx.beginPath();
+          ctx.arc(0, -75, 8, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+
+          // Beret Visor Angle
+          ctx.beginPath();
+          ctx.ellipse(3, -77, 10, 3, 0.3, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Torso & Uniform
+          ctx.beginPath();
+          ctx.moveTo(-10, -65);
+          ctx.lineTo(10, -65);
+          ctx.lineTo(12, -25);
+          ctx.lineTo(-12, -25);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+
+          // Legs & Boots
+          ctx.fillRect(-10, -25, 8, 25);
+          ctx.fillRect(2, -25, 8, 25);
+
+          // Saluting Right Arm
+          ctx.beginPath();
+          ctx.moveTo(8, -60);
+          ctx.lineTo(18, -68);
+          ctx.lineTo(10, -76); // Touching temple
+          ctx.lineWidth = 4;
+          ctx.strokeStyle = ctx.fillStyle;
+          ctx.stroke();
+
+          // Left Arm at attention
+          ctx.beginPath();
+          ctx.moveTo(-8, -60);
+          ctx.lineTo(-12, -35);
+          ctx.stroke();
+
+          ctx.restore();
+        }
+      }
+
+      function updateAndDrawBirds(ctx) {
+        ctx.save();
+        ctx.strokeStyle =
+          state.mode === "night"
+            ? "rgba(200, 220, 255, 0.4)"
+            : "rgba(30, 41, 59, 0.8)";
+        ctx.lineWidth = 1.8;
+
+        for (let bird of birds) {
+          bird.x += bird.vx;
+          bird.y +=
+            bird.vy + Math.sin(state.time * 0.002 + bird.x * 0.01) * 0.2;
+          bird.wingAngle += bird.wingSpeed;
+
+          if (bird.x > canvas.width + 50) bird.x = -50;
+
+          const wingY = Math.sin(bird.wingAngle) * (bird.size * 0.6);
+
+          ctx.beginPath();
+          ctx.moveTo(bird.x - bird.size, bird.y + wingY);
+          ctx.quadraticCurveTo(
+            bird.x - bird.size * 0.3,
+            bird.y - wingY,
+            bird.x,
+            bird.y,
+          );
+          ctx.quadraticCurveTo(
+            bird.x + bird.size * 0.3,
+            bird.y - wingY,
+            bird.x + bird.size,
+            bird.y + wingY,
+          );
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      function updateAndDrawPetals(ctx) {
+        if (!state.petalsEnabled) return;
+
+        ctx.save();
+        for (let p of petals) {
+          p.x += p.vx + Math.sin(state.time * 0.002 + p.z) * 0.8;
+          p.y += p.vy;
+          p.rotX += p.vRotX;
+          p.rotY += p.vRotY;
+
+          if (p.y > canvas.height + 20) {
+            p.y = -20;
+            p.x = Math.random() * (canvas.width + 200) - 100;
+          }
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.scale(Math.cos(p.rotX) * p.z * 0.8, Math.sin(p.rotY) * p.z * 0.8);
+          ctx.rotate(p.rotZ);
+
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.size, p.size * 0.5, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.restore();
+        }
+        ctx.restore();
+      }
+
+      function updateAndDrawFireworksFX(ctx) {
+        // Soundwave Ripples
+        ctx.save();
+        for (let i = soundwaveRipples.length - 1; i >= 0; i--) {
+          const r = soundwaveRipples[i];
+          r.radius += r.speed;
+          r.alpha = Math.max(0, 1 - r.radius / r.maxRadius);
+
+          ctx.strokeStyle = r.color;
+          ctx.globalAlpha = r.alpha * 0.7;
+          ctx.lineWidth = 4;
+          ctx.beginPath();
+          ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+          ctx.stroke();
+
+          if (r.alpha <= 0 || r.radius >= r.maxRadius) {
+            soundwaveRipples.splice(i, 1);
+          }
+        }
+        ctx.restore();
+
+        // Fireworks Spark Particles
+        ctx.save();
+        for (let i = sparkParticles.length - 1; i >= 0; i--) {
+          const p = sparkParticles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.alpha -= p.decay;
+
+          if (p.alpha <= 0) {
+            sparkParticles.splice(i, 1);
+            continue;
+          }
+
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.alpha;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+
+      // Web Audio API & SpeechSynthesis Fanfare Engine
+      let audioCtx = null;
+
+      function playJoyBanglaFanfare() {
+        // 1. Trigger Visual Explosions
+        triggerJoyBanglaVisualFX();
+
+        // 2. Web Audio Synthesized Bugle Trumpet Fanfare
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === "suspended") audioCtx.resume();
+
+        const now = audioCtx.currentTime;
+
+        // Bugle Note Frequencies (Patriotic Triumphant Motifs)
+        // C4=261.63, G4=392.00, C5=523.25, E5=659.25, G5=783.99, C6=1046.50
+        const notes = [
+          { f: 392.0, start: 0.0, dur: 0.22 }, // G4
+          { f: 523.25, start: 0.22, dur: 0.22 }, // C5
+          { f: 659.25, start: 0.44, dur: 0.22 }, // E5
+          { f: 783.99, start: 0.66, dur: 0.55 }, // G5 (Hold)
+          { f: 659.25, start: 1.25, dur: 0.2 }, // E5
+          { f: 783.99, start: 1.45, dur: 0.85 }, // G5 Long Note
+        ];
+
+        // Brass Synth Instrument
+        notes.forEach((note) => {
+          const osc = audioCtx.createOscillator();
+          const osc2 = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          const filter = audioCtx.createBiquadFilter();
+
+          // Harmonic Brass Waveform
+          osc.type = "sawtooth";
+          osc2.type = "triangle";
+          osc.frequency.setValueAtTime(note.f, now + note.start);
+          osc2.frequency.setValueAtTime(note.f * 1.002, now + note.start); // Detune richness
+
+          filter.type = "lowpass";
+          filter.frequency.setValueAtTime(1200, now + note.start);
+          filter.frequency.exponentialRampToValueAtTime(
+            3200,
+            now + note.start + 0.08,
+          );
+          filter.frequency.exponentialRampToValueAtTime(
+            1000,
+            now + note.start + note.dur,
+          );
+
+          gain.gain.setValueAtTime(0.001, now + note.start);
+          gain.gain.linearRampToValueAtTime(0.28, now + note.start + 0.05);
+          gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            now + note.start + note.dur,
+          );
+
+          osc.connect(filter);
+          osc2.connect(filter);
+          filter.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.start(now + note.start);
+          osc2.start(now + note.start);
+          osc.stop(now + note.start + note.dur + 0.1);
+          osc2.stop(now + note.start + note.dur + 0.1);
+        });
+
+        // Orchestral Bass Drum Swell
+        const drumOsc = audioCtx.createOscillator();
+        const drumGain = audioCtx.createGain();
+        drumOsc.type = "sine";
+        drumOsc.frequency.setValueAtTime(140, now);
+        drumOsc.frequency.exponentialRampToValueAtTime(38, now + 0.6);
+
+        drumGain.gain.setValueAtTime(0.6, now);
+        drumGain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+
+        drumOsc.connect(drumGain);
+        drumGain.connect(audioCtx.destination);
+        drumOsc.start(now);
+        drumOsc.stop(now + 0.7);
+
+        // 3. SpeechSynthesis Pronunciation ("Joy Bangla!" / "জয় বাংলা!")
+        if ("speechSynthesis" in window) {
+          window.speechSynthesis.cancel(); // Reset active speech
+          const utterance = new SpeechSynthesisUtterance("জয় বাংলা!");
+          utterance.lang = "bn-BD"; // Bengali locale
+          utterance.pitch = 1.15;
+          utterance.rate = 0.95;
+          utterance.volume = 1.0;
+
+          // Speech delay to align with fanfare crescendo
+          setTimeout(() => {
+            window.speechSynthesis.speak(utterance);
+          }, 400);
+        }
+      }
+
+      // Joy Bangla Hero Button Listener
+      document.getElementById("joyBanglaBtn").addEventListener("click", () => {
+        playJoyBanglaFanfare();
+      });
+
+      // Mode Preset Switchers
+      document.querySelectorAll(".mode-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          document
+            .querySelectorAll(".mode-btn")
+            .forEach((b) => b.classList.remove("active"));
+          const target = e.currentTarget;
+          target.classList.add("active");
+          state.mode = target.dataset.mode;
+        });
+      });
+
+      // Wind Slider
+      const windSlider = document.getElementById("windSlider");
+      const windVal = document.getElementById("windVal");
+      windSlider.addEventListener("input", (e) => {
+        state.windSpeed = parseInt(e.target.value);
+        windVal.textContent = `${state.windSpeed} km/h`;
+      });
+
+      // Petal Type Selector
+      document.querySelectorAll(".petal-type-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          document
+            .querySelectorAll(".petal-type-btn")
+            .forEach((b) => b.classList.remove("active"));
+          const target = e.currentTarget;
+          target.classList.add("active");
+          state.petalType = target.dataset.petal;
+          petals.forEach((p) => (p.color = getPetalColor()));
+        });
+      });
+
+      // Petal Toggle
+      const petalToggleBtn = document.getElementById("petalToggleBtn");
+      petalToggleBtn.addEventListener("click", () => {
+        state.petalsEnabled = !state.petalsEnabled;
+        petalToggleBtn.textContent = state.petalsEnabled
+          ? "Enabled"
+          : "Disabled";
+        petalToggleBtn.className = state.petalsEnabled
+          ? "text-xs px-2.5 py-0.5 rounded-full bg-emerald-600/70 border border-emerald-400/40 text-emerald-100"
+          : "text-xs px-2.5 py-0.5 rounded-full bg-gray-700/60 border border-gray-500/30 text-gray-400";
+      });
+
+      // Feature Toggles
+      document
+        .getElementById("toggleRaysBtn")
+        .addEventListener("click", (e) => {
+          state.godRays = !state.godRays;
+          e.currentTarget.classList.toggle("active");
+        });
+
+      document
+        .getElementById("toggleGuardsBtn")
+        .addEventListener("click", (e) => {
+          state.guardsSalute = !state.guardsSalute;
+          e.currentTarget.classList.toggle("active");
+        });
+
+      // Ambient Wind Audio Toggle
+      let windNoiseNode = null;
+      document
+        .getElementById("ambientAudioBtn")
+        .addEventListener("click", () => {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (!audioCtx) audioCtx = new AudioContext();
+
+          if (audioCtx.state === "suspended") {
+            audioCtx.resume();
+          }
+
+          if (!windNoiseNode) {
+            const bufferSize = audioCtx.sampleRate * 2;
+            const noiseBuffer = audioCtx.createBuffer(
+              1,
+              bufferSize,
+              audioCtx.sampleRate,
+            );
+            const output = noiseBuffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+              output[i] = (Math.random() * 2 - 1) * 0.025;
+            }
+            windNoiseNode = audioCtx.createBufferSource();
+            windNoiseNode.buffer = noiseBuffer;
+            windNoiseNode.loop = true;
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = "lowpass";
+            filter.frequency.value = 320;
+
+            windNoiseNode.connect(filter);
+            filter.connect(audioCtx.destination);
+            windNoiseNode.start();
+
+            document.getElementById("ambientAudioStatus").textContent =
+              "Wind Active";
+          } else {
+            audioCtx.suspend();
+            windNoiseNode = null;
+            document.getElementById("ambientAudioStatus").textContent =
+              "Wind Muted";
+          }
+        });
+
+      // Collapse Panel
+      const toggleCollapseBtn = document.getElementById("toggleCollapseBtn");
+      const panelContent = document.getElementById("panelContent");
+      let collapsed = false;
+      toggleCollapseBtn.addEventListener("click", () => {
+        collapsed = !collapsed;
+        panelContent.style.display = collapsed ? "none" : "block";
+        toggleCollapseBtn.querySelector("i").className = collapsed
+          ? "ph-bold ph-caret-up text-lg"
+          : "ph-bold ph-caret-down text-lg";
+      });
+
+      // Fullscreen
+      document.getElementById("fullscreenBtn").addEventListener("click", () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      });
+
+      // Scatter Petal Shower
+      document.getElementById("reseedBtn").addEventListener("click", () => {
+        spawnPetalBurst(canvas.width / 2, canvas.height / 3, 50);
+      });
+
+      function renderLoop(timestamp) {
+        state.time = timestamp;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawAtmosphereAndSky(ctx);
+        drawSritiShoudo(ctx, false);
+        updateFlagPhysics();
+        draw3DFlag(ctx);
+        drawWaterAndReflection(ctx);
+        drawSalutingGuards(ctx);
+        updateAndDrawBirds(ctx);
+        updateAndDrawPetals(ctx);
+        updateAndDrawFireworksFX(ctx);
+
+        requestAnimationFrame(renderLoop);
+      }
+
+      window.onload = () => {
+        resizeCanvas();
+        requestAnimationFrame(renderLoop);
+      };
+    </script>
+  </body>
+</html>
