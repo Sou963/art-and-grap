@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>An Artist's Tribute to Shaheed Minar | শহীদ মিনার চিত্রাঙ্কন</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Tiro+Bangla:ital@0;1&family=Cinzel:wght@600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-paper: #f7f3e9;
+        --primary-red: #d62828;
+        --emerald-green: #1b4332;
+        --charcoal: #2b2d42;
+        --gold: #d4af37;
+        --panel-bg: rgba(255, 255, 255, 0.88);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        user-select: none;
+      }
+
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: "Hind Siliguri", "Tiro Bangla", sans-serif;
+        background-color: var(--bg-paper);
+        color: var(--charcoal);
+      }
+
+      /* Paper texture background */
+      .paper-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f6f1e5;
+        background-image:
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(235, 225, 205, 0.4) 100%
+          ),
+          radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+        background-size:
+          100% 100%,
+          24px 24px;
+        z-index: 1;
+      }
+
+      /* Main Canvas for Shaheed Minar */
+      #artCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        cursor: crosshair;
+      }
+
+      /* Corner Boy Artist Container */
+      .boy-artist-corner {
+        position: absolute;
+        bottom: -10px;
+        left: 10px;
+        width: 340px;
+        height: 340px;
+        z-index: 10;
+        pointer-events: none;
+        filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.15));
+      }
+
+      /* Header Title Banner */
+      .header-title {
+        position: absolute;
+        top: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 8;
+        text-align: center;
+        pointer-events: none;
+        width: 90%;
+        max-width: 700px;
+      }
+
+      .header-title h1 {
+        font-family: "Tiro Bangla", serif;
+        font-size: 2.2rem;
+        color: #8b0000;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        letter-spacing: 1px;
+        margin-bottom: 2px;
+      }
+
+      .header-title p {
+        font-size: 0.95rem;
+        color: #555;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      /* Floating Bangla Alphabets Decorative Layer */
+      .bangla-letters-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 3;
+        overflow: hidden;
+      }
+
+      /* Modern Glassmorphic Control Panel */
+      .controls-panel {
+        position: absolute;
+        bottom: 25px;
+        right: 25px;
+        z-index: 12;
+        background: var(--panel-bg);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 20px;
+        padding: 18px 24px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        min-width: 280px;
+      }
+
+      .panel-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .panel-label {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--charcoal);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      /* Custom Stylized Buttons */
+      .btn-action {
+        background: linear-gradient(135deg, #d62828, #9e1c1c);
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 12px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        font-family: "Hind Siliguri", sans-serif;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(214, 40, 40, 0.3);
+        transition: all 0.25s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex: 1;
+      }
+
+      .btn-action:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(214, 40, 40, 0.45);
+        background: linear-gradient(135deg, #e63946, #b71c1c);
+      }
+
+      .btn-action:active {
+        transform: translateY(1px);
+      }
+
+      .btn-secondary {
+        background: linear-gradient(135deg, #1b4332, #2d6a4f);
+        box-shadow: 0 4px 12px rgba(27, 67, 50, 0.3);
+      }
+
+      .btn-secondary:hover {
+        background: linear-gradient(135deg, #2d6a4f, #40916c);
+        box-shadow: 0 6px 16px rgba(27, 67, 50, 0.45);
+      }
+
+      .btn-icon {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%;
+        flex: none;
+      }
+
+      /* Style Selectors & Sliders */
+      select,
+      input[type="range"] {
+        accent-color: var(--primary-red);
+        cursor: pointer;
+      }
+
+      select {
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        background: #fff;
+        font-family: "Hind Siliguri", sans-serif;
+        font-weight: 600;
+        outline: none;
+      }
+
+      .progress-bar-container {
+        width: 100%;
+        height: 6px;
+        background: #e0e0e0;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-top: 2px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #d62828, #d4af37);
+        transition: width 0.1s linear;
+      }
+
+      /* Canvas Sketch Overlay Frame */
+      .easel-frame {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 86vw;
+        height: 82vh;
+        border: 12px solid #e2d2b4;
+        border-radius: 16px;
+        box-shadow:
+          inset 0 0 20px rgba(0, 0, 0, 0.08),
+          0 20px 50px rgba(0, 0, 0, 0.15);
+        pointer-events: none;
+        z-index: 4;
+      }
+
+      /* Sound Indicator Badge */
+      .flute-badge {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        padding: 8px 16px;
+        border-radius: 30px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #1b4332;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .flute-badge:hover {
+        transform: scale(1.04);
+        background: #fff;
+      }
+
+      .pulse-dot {
+        width: 10px;
+        height: 10px;
+        background-color: #2a9d8f;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .pulse-dot.active {
+        background-color: #e63946;
+        animation: pulse 1.2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
+        }
+        70% {
+          transform: scale(1.1);
+          box-shadow: 0 0 0 10px rgba(230, 57, 70, 0);
+        }
+        100% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(230, 57, 70, 0);
+        }
+      }
+
+      /* Mobile Adjustments */
+      @media (max-width: 768px) {
+        .boy-artist-corner {
+          width: 220px;
+          height: 220px;
+          left: -10px;
+          bottom: -10px;
+        }
+        .header-title h1 {
+          font-size: 1.5rem;
+        }
+        .header-title p {
+          font-size: 0.8rem;
+        }
+        .controls-panel {
+          bottom: 12px;
+          right: 12px;
+          left: 12px;
+          min-width: auto;
+          padding: 12px 16px;
+        }
+        .easel-frame {
+          width: 94vw;
+          height: 86vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Paper Background Texture -->
+    <div class="paper-background"></div>
+
+    <!-- Wooden Frame Effect -->
+    <div class="easel-frame"></div>
+
+    <!-- Header Title -->
+    <div class="header-title">
+      <h1>আমার ভাইয়ের রক্তে রাঙানো একুশে ফেব্রুয়ারি</h1>
+    </div>
+
+    <!-- Flute Sound Toggle Badge -->
+    <div class="flute-badge" id="fluteToggle">
+      <span class="pulse-dot" id="soundPulse"></span>
+      <span id="soundStatusText">🎵 বাঁশি (Bansuri Music): Off</span>
+    </div>
+
+    <!-- Main Canvas for Animation -->
+    <canvas id="artCanvas"></canvas>
+
+    <!-- Animated Boy Artist in Corner (SVG + Dynamic Hand Physics) -->
+    <div class="boy-artist-corner" id="boyArtistWrapper">
+      <svg viewBox="0 0 300 300" width="100%" height="100%" id="boySvg">
+        <defs>
+          <!-- Shadows & Gradients -->
+          <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ff4d4d" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#d62828" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2a9d8f" />
+            <stop offset="100%" stop-color="#1b4332" />
+          </linearGradient>
+          <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffdbac" />
+            <stop offset="100%" stop-color="#f1c27d" />
+          </linearGradient>
+          <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+            <feDropShadow dx="2" dy="5" stdDeviation="4" flood-opacity="0.25" />
+          </filter>
+        </defs>
+
+        <!-- Artist Stool / Seat -->
+        <ellipse cx="110" cy="265" rx="45" ry="12" fill="#8d5b4c" />
+        <rect x="80" y="260" width="10" height="35" rx="3" fill="#5c3a21" />
+        <rect x="130" y="260" width="10" height="35" rx="3" fill="#5c3a21" />
+
+        <!-- Artist Palette on Ground -->
+        <path
+          d="M 160 260 C 180 250, 210 260, 200 275 C 190 285, 160 285, 155 270 Z"
+          fill="#e0a96d"
+          filter="url(#dropShadow)"
+        />
+        <circle cx="168" cy="264" r="4" fill="#d62828" />
+        <circle cx="180" cy="263" r="4" fill="#1b4332" />
+        <circle cx="190" cy="268" r="4" fill="#d4af37" />
+        <circle cx="178" cy="275" r="4" fill="#0077b6" />
+
+        <!-- Boy's Body (Back/Side Perspective facing drawing board) -->
+        <!-- Torso / Shirt -->
+        <path
+          d="M 85 190 C 80 150, 110 140, 135 150 C 150 160, 145 220, 125 250 C 105 255, 90 230, 85 190 Z"
+          fill="url(#shirtGrad)"
+          filter="url(#dropShadow)"
+        />
+
+        <!-- Head & Hair -->
+        <!-- Neck -->
+        <rect
+          x="110"
+          y="130"
+          width="14"
+          height="20"
+          rx="5"
+          fill="url(#skinGrad)"
+        />
+        <!-- Head -->
+        <circle cx="115" cy="115" r="24" fill="url(#skinGrad)" />
+        <!-- Hair (Cute fluffy boy hair) -->
+        <path
+          d="M 92 112 C 90 90, 110 85, 128 88 C 142 90, 142 110, 138 118 C 130 100, 115 95, 98 108 Z"
+          fill="#2b1e1a"
+        />
+        <path
+          d="M 95 105 C 90 98, 100 88, 115 88 C 125 88, 135 95, 132 105 C 120 95, 105 98, 95 105 Z"
+          fill="#3d2b1f"
+        />
+        <!-- Ear -->
+        <circle cx="128" cy="118" r="5" fill="#f1c27d" />
+
+        <!-- Left Arm (Holding Easel Edge) -->
+        <path
+          d="M 95 160 Q 75 180, 82 210"
+          stroke="url(#skinGrad)"
+          stroke-width="12"
+          stroke-linecap="round"
+          fill="none"
+        />
+
+        <!-- Right Arm & Brush (ANIMATED DYNAMICALLY TOWARD CANVAS) -->
+        <g id="drawingArmGroup">
+          <!-- Upper Arm -->
+          <path
+            id="upperArm"
+            d="M 130 160 Q 155 170, 175 165"
+            stroke="url(#skinGrad)"
+            stroke-width="13"
+            stroke-linecap="round"
+            fill="none"
+          />
+          <!-- Forearm & Hand with Brush -->
+          <g id="forearmAndBrush">
+            <path
+              d="M 175 165 L 215 150"
+              stroke="url(#skinGrad)"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
+            <!-- Hand -->
+            <circle cx="217" cy="149" r="6" fill="#f1c27d" />
+            <!-- Paintbrush / Pencil Stick -->
+            <line
+              x1="212"
+              y1="154"
+              x2="255"
+              y2="125"
+              stroke="#5c3a21"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+            <!-- Ferrule (metal band) -->
+            <line
+              x1="248"
+              y1="130"
+              x2="252"
+              y2="127"
+              stroke="#aaa"
+              stroke-width="5"
+            />
+            <!-- Brush Tip / Glowing Tip -->
+            <polygon
+              points="253,126 265,116 258,122"
+              fill="#d62828"
+              id="brushTipColor"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Floating Bangla Alphabets Container -->
+    <div class="bangla-letters-container" id="lettersContainer"></div>
+
+    <!-- UI Controls Panel -->
+    <div class="controls-panel">
+      <div class="panel-row">
+        <button class="btn-action" id="btnPlayPause">
+          <span id="playIcon">⏸️</span> <span id="playText">পজ (Pause)</span>
+        </button>
+        <button
+          class="btn-action btn-secondary btn-icon"
+          id="btnRestart"
+          title="Redraw / পুনরায় আঁকুন"
+        >
+          🔄
+        </button>
+      </div>
+
+      <div class="panel-row">
+        <span class="panel-label">🎨 আর্ট স্টাইল (Style):</span>
+        <select id="styleSelect">
+          <option value="sketch">চারকোল পেন্সিল (Charcoal)</option>
+          <option value="watercolor" selected>রঙিন জলরং (Watercolor)</option>
+          <option value="glowing">উজ্জ্বল আলো (Golden Glow)</option>
+        </select>
+      </div>
+
+      <div class="panel-row">
+        <span class="panel-label">⚡ আঁকার গতি (Speed):</span>
+        <input
+          type="range"
+          id="speedSlider"
+          min="1"
+          max="5"
+          value="3"
+          step="1"
+          style="width: 100px"
+        />
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar-container">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <script>
+      /**
+       * SHAKEED MINAR ARTIST - CORE JS ENGINE
+       * Features: Multi-stroke Vector Path Interpolation, Dynamic Boy Arm Tracking,
+       * Watercolor Engine, Web Audio Bansuri Flute, and Particle FX.
+       */
+
+      // Canvas Setup
+      const canvas = document.getElementById("artCanvas");
+      const ctx = canvas.getContext("2d");
+      let width, height, scale;
+
+      // UI Elements
+      const progressFill = document.getElementById("progressFill");
+      const btnPlayPause = document.getElementById("btnPlayPause");
+      const playIcon = document.getElementById("playIcon");
+      const playText = document.getElementById("playText");
+      const btnRestart = document.getElementById("btnRestart");
+      const styleSelect = document.getElementById("styleSelect");
+      const speedSlider = document.getElementById("speedSlider");
+      const fluteToggle = document.getElementById("fluteToggle");
+      const soundPulse = document.getElementById("soundPulse");
+      const soundStatusText = document.getElementById("soundStatusText");
+
+      // Boy Arm SVG Elements
+      const forearmAndBrush = document.getElementById("forearmAndBrush");
+      const brushTipColor = document.getElementById("brushTipColor");
+
+      // State Machine
+      let isDrawing = true;
+      let drawProgress = 0; // 0 to 1 overall progress
+      let currentStrokeIndex = 0;
+      let strokeSubProgress = 0;
+      let speedMultiplier = 1;
+      let artStyle = "watercolor"; // watercolor, sketch, glowing
+
+      // Audio Context & Bansuri Flute Synthesizer
+      let audioCtx = null;
+      let isMusicPlaying = false;
+      let fluteInterval = null;
+
+      // Bengali Alphabets for Floating Petal Effect
+      const banglaLetters = [
+        "অ",
+        "আ",
+        "ক",
+        "খ",
+        "গ",
+        "ঘ",
+        "ঙ",
+        "চ",
+        "ছ",
+        "জ",
+        "ঝ",
+        "ঞ",
+        "ট",
+        "ঠ",
+        "ড",
+        "ঢ",
+        "ণ",
+        "ত",
+        "থ",
+        "দ",
+        "ধ",
+        "ন",
+        "প",
+        "ফ",
+        "ব",
+        "ভ",
+        "ম",
+        "য",
+        "র",
+        "ল",
+        "শ",
+        "ষ",
+        "স",
+        "হ",
+        "ড়",
+        "ঢ়",
+        "য়",
+      ];
+
+      // Resize Canvas to Fullscreen with DPR Scaling
+      function resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1;
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
+        // Re-render immediately on resize
+        renderScene();
+      }
+      window.addEventListener("resize", resizeCanvas);
+
+      // Vector Paths for Shaheed Minar (Normalized Coords 0.0 to 1.0)
+      // Center of canvas will be placed at X: 0.5, Y: 0.52
+      const shaheedMinarPaths = [
+        // --- 1. BASE PLATFORM & STEPS ---
+        {
+          type: "polygon",
+          color: "#8d99ae",
+          fillColor: "#d8d2c2",
+          lineWidth: 3,
+          points: [
+            { x: 0.22, y: 0.78 },
+            { x: 0.78, y: 0.78 },
+            { x: 0.82, y: 0.82 },
+            { x: 0.18, y: 0.82 },
+          ],
+        },
+        {
+          type: "polygon",
+          color: "#6c757d",
+          fillColor: "#baa892",
+          lineWidth: 3,
+          points: [
+            { x: 0.18, y: 0.82 },
+            { x: 0.82, y: 0.82 },
+            { x: 0.85, y: 0.86 },
+            { x: 0.15, y: 0.86 },
+          ],
+        },
+
+        // --- 2. CRIMSON SUN (THE SYMBOLIC RED CIRCLE BEHIND MAIN COLUMN) ---
+        {
+          type: "circle",
+          color: "#d62828",
+          fillColor: "rgba(214, 40, 40, 0.85)",
+          cx: 0.5,
+          cy: 0.44,
+          radius: 0.17,
+        },
+
+        // --- 3. MAIN CENTRAL COLUMN (TALL WITH ANGLED TOP PANEL) ---
+        // Left Bar of Center Column
+        {
+          type: "path",
+          color: "#2b2d42",
+          fillColor: "#e9ecef",
+          lineWidth: 4,
+          points: [
+            { x: 0.46, y: 0.78 },
+            { x: 0.46, y: 0.22 },
+            { x: 0.475, y: 0.22 },
+            { x: 0.475, y: 0.78 },
+          ],
+        },
+        // Right Bar of Center Column
+        {
+          type: "path",
+          color: "#2b2d42",
+          fillColor: "#e9ecef",
+          lineWidth: 4,
+          points: [
+            { x: 0.525, y: 0.78 },
+            { x: 0.525, y: 0.22 },
+            { x: 0.54, y: 0.22 },
+            { x: 0.54, y: 0.78 },
+          ],
+        },
+        // Top Angled Header (Forward inclined roof structure)
+        {
+          type: "polygon",
+          color: "#2b2d42",
+          fillColor: "#ced4da",
+          lineWidth: 4,
+          points: [
+            { x: 0.44, y: 0.22 },
+            { x: 0.56, y: 0.22 },
+            { x: 0.58, y: 0.32 },
+            { x: 0.42, y: 0.32 },
+          ],
+        },
+        // Inner Grill Lines of Central Column
+        {
+          type: "path",
+          color: "#adb5bd",
+          lineWidth: 2,
+          points: [
+            { x: 0.49, y: 0.78 },
+            { x: 0.49, y: 0.32 },
+          ],
+        },
+        {
+          type: "path",
+          color: "#adb5bd",
+          lineWidth: 2,
+          points: [
+            { x: 0.51, y: 0.78 },
+            { x: 0.51, y: 0.32 },
+          ],
+        },
+
+        // --- 4. INNER LEFT COLUMN (SLANTED TOP AWAY FROM CENTER) ---
+        {
+          type: "polygon",
+          color: "#2b2d42",
+          fillColor: "#f8f9fa",
+          lineWidth: 3.5,
+          points: [
+            { x: 0.37, y: 0.78 },
+            { x: 0.37, y: 0.38 },
+            { x: 0.42, y: 0.34 },
+            { x: 0.42, y: 0.78 },
+          ],
+        },
+
+        // --- 5. INNER RIGHT COLUMN (MIRRORED SLANTED TOP) ---
+        {
+          type: "polygon",
+          color: "#2b2d42",
+          fillColor: "#f8f9fa",
+          lineWidth: 3.5,
+          points: [
+            { x: 0.58, y: 0.78 },
+            { x: 0.58, y: 0.34 },
+            { x: 0.63, y: 0.38 },
+            { x: 0.63, y: 0.78 },
+          ],
+        },
+
+        // --- 6. OUTER LEFT COLUMN (SHORTER, SLANTED TOP) ---
+        {
+          type: "polygon",
+          color: "#2b2d42",
+          fillColor: "#e9ecef",
+          lineWidth: 3,
+          points: [
+            { x: 0.29, y: 0.78 },
+            { x: 0.29, y: 0.52 },
+            { x: 0.34, y: 0.48 },
+            { x: 0.34, y: 0.78 },
+          ],
+        },
+
+        // --- 7. OUTER RIGHT COLUMN (SHORTER, SLANTED TOP) ---
+        {
+          type: "polygon",
+          color: "#2b2d42",
+          fillColor: "#e9ecef",
+          lineWidth: 3,
+          points: [
+            { x: 0.66, y: 0.78 },
+            { x: 0.66, y: 0.48 },
+            { x: 0.71, y: 0.52 },
+            { x: 0.71, y: 0.78 },
+          ],
+        },
+
+        // --- 8. RED KRISHNACHURA FLOWER BED & SHAHEED BEDI DECORATIONS ---
+        {
+          type: "flowerBed",
+          color: "#d62828",
+          points: [
+            { x: 0.24, y: 0.8 },
+            { x: 0.28, y: 0.81 },
+            { x: 0.33, y: 0.8 },
+            { x: 0.38, y: 0.81 },
+            { x: 0.45, y: 0.8 },
+            { x: 0.52, y: 0.81 },
+            { x: 0.58, y: 0.8 },
+            { x: 0.65, y: 0.81 },
+            { x: 0.72, y: 0.8 },
+          ],
+        },
+
+        // --- 9. ALPONA / TRADITIONAL MOTIFS ON GROUND ---
+        {
+          type: "alpona",
+          color: "#ffffff",
+          cy: 0.84,
+        },
+      ];
+
+      // Active Dynamic Particles (Dust, Paint Splatters, Floating Letters)
+      let particles = [];
+
+      class Particle {
+        constructor(x, y, color, type = "dust") {
+          this.x = x;
+          this.y = y;
+          this.color = color;
+          this.type = type;
+          this.size =
+            type === "letter" ? Math.random() * 18 + 14 : Math.random() * 5 + 2;
+          this.vx = (Math.random() - 0.5) * 2;
+          this.vy =
+            type === "letter"
+              ? -Math.random() * 1.5 - 0.8
+              : (Math.random() - 0.5) * 2;
+          this.alpha = 1;
+          this.life = 1;
+          this.decay = Math.random() * 0.015 + 0.008;
+          this.letter =
+            type === "letter"
+              ? banglaLetters[Math.floor(Math.random() * banglaLetters.length)]
+              : "";
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.alpha -= this.decay;
+          this.life -= this.decay;
+        }
+
+        draw(ctx) {
+          ctx.save();
+          ctx.globalAlpha = Math.max(0, this.alpha);
+          if (this.type === "letter") {
+            ctx.font = `700 ${this.size}px 'Tiro Bangla', serif`;
+            ctx.fillStyle = this.color;
+            ctx.fillText(this.letter, this.x, this.y);
+          } else {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+      }
+
+      // Render Loop for Drawing Scene
+      function renderScene() {
+        // Clear screen
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw Background Soft Canvas Glow / Vignette
+        const bgGlow = ctx.createRadialGradient(
+          width / 2,
+          height / 2,
+          50,
+          width / 2,
+          height / 2,
+          width * 0.6,
+        );
+        bgGlow.addColorStop(0, "rgba(255, 255, 255, 0.4)");
+        bgGlow.addColorStop(1, "rgba(235, 220, 195, 0.1)");
+        ctx.fillStyle = bgGlow;
+        ctx.fillRect(0, 0, width, height);
+
+        // Calculate current drawing cursor coordinate
+        let currentPenPos = { x: width * 0.2, y: height * 0.8 };
+
+        // Render all completed & in-progress paths
+        for (
+          let i = 0;
+          i <= currentStrokeIndex && i < shaheedMinarPaths.length;
+          i++
+        ) {
+          const pathObj = shaheedMinarPaths[i];
+          const isCurrent = i === currentStrokeIndex;
+          const progress = isCurrent ? strokeSubProgress : 1.0;
+
+          const pos = drawPathItem(pathObj, progress);
+          if (isCurrent && pos) {
+            currentPenPos = pos;
+          }
+        }
+
+        // Draw Floating Particles
+        for (let i = particles.length - 1; i >= 0; i--) {
+          particles[i].update();
+          particles[i].draw(ctx);
+          if (particles[i].alpha <= 0) {
+            particles.splice(i, 1);
+          }
+        }
+
+        // If actively drawing, create brush sparkles & update Boy's Arm position
+        if (isDrawing && currentStrokeIndex < shaheedMinarPaths.length) {
+          // Spawn dust particles at pen location
+          if (Math.random() < 0.6) {
+            const pColor =
+              artStyle === "glowing"
+                ? "#d4af37"
+                : Math.random() < 0.3
+                  ? "#d62828"
+                  : "#2b2d42";
+            particles.push(
+              new Particle(currentPenPos.x, currentPenPos.y, pColor, "dust"),
+            );
+          }
+
+          // Occasionally spawn floating Bengali letter
+          if (Math.random() < 0.04) {
+            particles.push(
+              new Particle(
+                currentPenPos.x + (Math.random() - 0.5) * 40,
+                currentPenPos.y,
+                "#9e1c1c",
+                "letter",
+              ),
+            );
+          }
+
+          // Update Boy's Hand position SVG transform to point at pen position
+          updateBoyArmTracking(currentPenPos);
+        }
+      }
+
+      // Draw individual path segment based on type and progress
+      function drawPathItem(pathObj, progress) {
+        ctx.save();
+
+        let lastPoint = null;
+
+        if (artStyle === "glowing") {
+          ctx.shadowBlur = 15;
+          ctx.shadowColor = "#d4af37";
+        } else if (artStyle === "watercolor") {
+          ctx.shadowBlur = 4;
+          ctx.shadowColor = "rgba(0,0,0,0.15)";
+        }
+
+        if (pathObj.type === "circle") {
+          const cx = pathObj.cx * width;
+          const cy = pathObj.cy * height;
+          const r = pathObj.radius * Math.min(width, height);
+          const currentAngle = progress * Math.PI * 2;
+
+          // Fill Sun
+          if (
+            progress > 0.1 &&
+            (artStyle === "watercolor" || artStyle === "glowing")
+          ) {
+            ctx.beginPath();
+            ctx.arc(cx, cy, r, 0, currentAngle);
+            ctx.fillStyle = pathObj.fillColor;
+            ctx.globalAlpha = progress * 0.9;
+            ctx.fill();
+          }
+
+          // Outline Sun
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, 0, currentAngle);
+          ctx.strokeStyle = pathObj.color;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+
+          lastPoint = {
+            x: cx + r * Math.cos(currentAngle),
+            y: cy + r * Math.sin(currentAngle),
+          };
+        } else if (pathObj.type === "path" || pathObj.type === "polygon") {
+          const pts = pathObj.points.map((p) => ({
+            x: p.x * width,
+            y: p.y * height,
+          }));
+          if (pts.length < 2) return;
+
+          // Fill polygon if complete
+          if (
+            pathObj.type === "polygon" &&
+            progress >= 0.95 &&
+            (artStyle === "watercolor" || artStyle === "glowing")
+          ) {
+            ctx.beginPath();
+            ctx.moveTo(pts[0].x, pts[0].y);
+            for (let k = 1; k < pts.length; k++) ctx.lineTo(pts[k].x, pts[k].y);
+            ctx.closePath();
+            ctx.fillStyle =
+              artStyle === "glowing"
+                ? "rgba(255,215,0,0.2)"
+                : pathObj.fillColor;
+            ctx.fill();
+          }
+
+          // Draw outline stroke with progress
+          ctx.beginPath();
+          ctx.moveTo(pts[0].x, pts[0].y);
+
+          const totalSegments =
+            pts.length - (pathObj.type === "polygon" ? 0 : 1);
+          const currentSegmentTarget = progress * totalSegments;
+
+          let drawnLength = 0;
+          lastPoint = pts[0];
+
+          for (let k = 0; k < totalSegments; k++) {
+            const p1 = pts[k];
+            const p2 = pts[(k + 1) % pts.length];
+
+            if (k < Math.floor(currentSegmentTarget)) {
+              ctx.lineTo(p2.x, p2.y);
+              lastPoint = p2;
+            } else if (k === Math.floor(currentSegmentTarget)) {
+              const segProgress = currentSegmentTarget - k;
+              const interpX = p1.x + (p2.x - p1.x) * segProgress;
+              const interpY = p1.y + (p2.y - p1.y) * segProgress;
+              ctx.lineTo(interpX, interpY);
+              lastPoint = { x: interpX, y: interpY };
+              break;
+            }
+          }
+
+          if (pathObj.type === "polygon" && progress >= 0.99) {
+            ctx.closePath();
+          }
+
+          ctx.strokeStyle =
+            artStyle === "sketch"
+              ? "#2b2d42"
+              : artStyle === "glowing"
+                ? "#ffd700"
+                : pathObj.color;
+          ctx.lineWidth = pathObj.lineWidth || 3;
+          ctx.lineCap = "round";
+          ctx.lineJoin = "round";
+          ctx.stroke();
+        } else if (pathObj.type === "flowerBed") {
+          // Flower Bed at pedestal
+          const pts = pathObj.points.map((p) => ({
+            x: p.x * width,
+            y: p.y * height,
+          }));
+          const count = Math.floor(pts.length * progress);
+
+          for (let k = 0; k < count; k++) {
+            const p = pts[k];
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, Math.random() * 6 + 6, 0, Math.PI * 2);
+            ctx.fillStyle = "#d62828";
+            ctx.fill();
+            // Green leaf detail
+            ctx.beginPath();
+            ctx.arc(p.x + 4, p.y + 3, 3, 0, Math.PI * 2);
+            ctx.fillStyle = "#1b4332";
+            ctx.fill();
+            lastPoint = p;
+          }
+        } else if (pathObj.type === "alpona") {
+          // Traditional floor paint pattern
+          const cy = pathObj.cy * height;
+          const centerX = width * 0.5;
+          const maxR = width * 0.18 * progress;
+
+          ctx.beginPath();
+          ctx.ellipse(centerX, cy, maxR, maxR * 0.3, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
+          ctx.lineWidth = 3;
+          ctx.stroke();
+
+          lastPoint = { x: centerX + maxR, y: cy };
+        }
+
+        ctx.restore();
+        return lastPoint;
+      }
+
+      // Animate Boy's Arm toward the active target pen location
+      function updateBoyArmTracking(targetPos) {
+        // Boy is located near bottom-left corner
+        const boyX = 100;
+        const boyY = height - 120;
+
+        // Calculate angle from boy's shoulder to drawing position
+        const dx = targetPos.x - boyX;
+        const dy = targetPos.y - boyY;
+        const angleDeg = (Math.atan2(dy, dx) * 180) / Math.PI + 25;
+
+        // Limit arm rotation range for natural artwork stance
+        const clampedAngle = Math.max(-45, Math.min(35, angleDeg));
+
+        // Apply SVG rotation to arm group
+        if (forearmAndBrush) {
+          forearmAndBrush.setAttribute(
+            "transform",
+            `rotate(${clampedAngle}, 175, 165)`,
+          );
+        }
+
+        // Dynamically change brush tip color based on active color
+        if (brushTipColor) {
+          const curPath = shaheedMinarPaths[currentStrokeIndex];
+          if (curPath && curPath.color) {
+            brushTipColor.setAttribute("fill", curPath.color);
+          }
+        }
+      }
+
+      // Main Animation Loop
+      let lastTime = performance.now();
+      function animate(currentTime) {
+        const deltaTime = (currentTime - lastTime) / 1000;
+        lastTime = currentTime;
+
+        if (isDrawing) {
+          // Advance stroke progress
+          const step = deltaTime * 0.35 * speedMultiplier;
+          strokeSubProgress += step;
+
+          if (strokeSubProgress >= 1.0) {
+            strokeSubProgress = 0;
+            currentStrokeIndex++;
+
+            if (currentStrokeIndex >= shaheedMinarPaths.length) {
+              // Drawing Finished!
+              isDrawing = false;
+              playIcon.textContent = "▶️";
+              playText.textContent = "পুনরায় চালান (Replay)";
+              // Burst of celebratory Bangla Alphabets
+              burstCelebrationLetters();
+            }
+          }
+
+          // Update Progress UI
+          const total = shaheedMinarPaths.length;
+          const overall = Math.min(
+            1.0,
+            (currentStrokeIndex + strokeSubProgress) / total,
+          );
+          progressFill.style.width = `${overall * 100}%`;
+        }
+
+        renderScene();
+        requestAnimationFrame(animate);
+      }
+
+      // Burst Bengali Letters on Drawing Completion
+      function burstCelebrationLetters() {
+        for (let i = 0; i < 35; i++) {
+          setTimeout(() => {
+            const px = width * (0.3 + Math.random() * 0.4);
+            const py = height * (0.3 + Math.random() * 0.4);
+            particles.push(new Particle(px, py, "#d62828", "letter"));
+          }, i * 120);
+        }
+      }
+
+      // Play/Pause Controls
+      btnPlayPause.addEventListener("click", () => {
+        if (currentStrokeIndex >= shaheedMinarPaths.length) {
+          // Restart if finished
+          restartDrawing();
+          return;
+        }
+        isDrawing = !isDrawing;
+        playIcon.textContent = isDrawing ? "⏸️" : "▶️";
+        playText.textContent = isDrawing ? "পজ (Pause)" : "চালু করুন (Play)";
+      });
+
+      // Restart Control
+      function restartDrawing() {
+        currentStrokeIndex = 0;
+        strokeSubProgress = 0;
+        isDrawing = true;
+        playIcon.textContent = "⏸️";
+        playText.textContent = "পজ (Pause)";
+        particles = [];
+      }
+      btnRestart.addEventListener("click", restartDrawing);
+
+      // Speed Control
+      speedSlider.addEventListener("input", (e) => {
+        speedMultiplier = parseFloat(e.target.value);
+      });
+
+      // Style Selector
+      styleSelect.addEventListener("change", (e) => {
+        artStyle = e.target.value;
+        renderScene();
+      });
+
+      // Interactive Click on Canvas Spawns Paint Splatter & Letter
+      canvas.addEventListener("pointerdown", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+
+        for (let i = 0; i < 8; i++) {
+          particles.push(new Particle(clickX, clickY, "#d62828", "dust"));
+        }
+        particles.push(new Particle(clickX, clickY, "#1b4332", "letter"));
+      });
+
+      // --- WEB AUDIO API: TRADITIONAL BENGALI BAMBOO FLUTE (BANSURI) SYNTHESIZER ---
+      function initAudio() {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+      }
+
+      // Pentatonic Raag-like Note Frequencies (Ekushey Flute Melody)
+      const bansuriNotes = [
+        293.66, // D4
+        329.63, // E4
+        349.23, // F4
+        392.0, // G4
+        440.0, // A4
+        466.16, // Bb4
+        523.25, // C5
+        587.33, // D5
+      ];
+
+      // Play a soft, warm bamboo flute note with sine/triangle blend and vibrato
+      function playFluteNote(freq, duration = 1.8) {
+        if (!audioCtx || audioCtx.state !== "running") return;
+
+        const now = audioCtx.currentTime;
+
+        // Main Tone Oscillator (Warm sine wave)
+        const osc = audioCtx.createOscillator();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, now);
+
+        // Breath noise / overtone (Triangle wave)
+        const oscHarmonic = audioCtx.createOscillator();
+        oscHarmonic.type = "triangle";
+        oscHarmonic.frequency.setValueAtTime(freq * 2, now);
+
+        // Vibrato LFO (Low Frequency Oscillator for authentic flute pitch waver)
+        const lfo = audioCtx.createOscillator();
+        lfo.frequency.setValueAtTime(5.5, now); // 5.5 Hz vibrato
+        const lfoGain = audioCtx.createGain();
+        lfoGain.gain.setValueAtTime(3.5, now);
+        lfo.connect(osc.frequency);
+
+        // Gain Envelope (Soft attack and long decay)
+        const noteGain = audioCtx.createGain();
+        noteGain.gain.setValueAtTime(0, now);
+        noteGain.gain.linearRampToValueAtTime(0.18, now + 0.3); // Soft attack
+        noteGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+        // Harmonic gain blend
+        const harmGain = audioCtx.createGain();
+        harmGain.gain.setValueAtTime(0.03, now);
+
+        // Connect routing
+        osc.connect(noteGain);
+        oscHarmonic.connect(harmGain);
+        harmGain.connect(noteGain);
+        noteGain.connect(audioCtx.destination);
+
+        // Start nodes
+        lfo.start(now);
+        osc.start(now);
+        oscHarmonic.start(now);
+
+        // Stop nodes
+        lfo.stop(now + duration);
+        osc.stop(now + duration);
+        oscHarmonic.stop(now + duration);
+      }
+
+      // Melodic Sequence Loop
+      function startFluteMelody() {
+        let noteIdx = 0;
+        const melodySequence = [0, 2, 3, 4, 3, 2, 0, 4, 5, 7, 5, 4, 3, 2, 0];
+
+        fluteInterval = setInterval(() => {
+          if (isMusicPlaying) {
+            const noteFreq = bansuriNotes[melodySequence[noteIdx]];
+            playFluteNote(noteFreq, 2.2);
+            noteIdx = (noteIdx + 1) % melodySequence.length;
+          }
+        }, 1600);
+      }
+
+      // Toggle Flute Music
+      fluteToggle.addEventListener("click", () => {
+        initAudio();
+
+        if (audioCtx.state === "suspended") {
+          audioCtx.resume();
+        }
+
+        isMusicPlaying = !isMusicPlaying;
+
+        if (isMusicPlaying) {
+          soundPulse.classList.add("active");
+          soundStatusText.textContent = "🎵 বাঁশি (Bansuri Music): On";
+          startFluteMelody();
+        } else {
+          soundPulse.classList.remove("active");
+          soundStatusText.textContent = "🎵 বাঁশি (Bansuri Music): Off";
+          if (fluteInterval) clearInterval(fluteInterval);
+        }
+      });
+
+      // Initialize App
+      resizeCanvas();
+      requestAnimationFrame(animate);
+    </script>
+  </body>
+</html>
